@@ -36,6 +36,11 @@
     --ring: 221.2 83.2% 53.3%;
 
     --radius: 0.5rem;
+    
+    /* AI theme colors */
+    --ai-blue: 221 83% 53%;
+    --ai-purple: 265 89% 78%;
+    --ai-pink: 330 95% 60%;
   }
 
   .dark {
@@ -66,6 +71,11 @@
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
     --ring: 224.3 76.3% 48%;
+    
+    /* AI theme colors - dark mode */
+    --ai-blue: 221 83% 63%;
+    --ai-purple: 265 89% 78%;
+    --ai-pink: 330 95% 70%;
   }
 }
 
@@ -102,4 +112,67 @@
     @apply bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300
     hover:bg-gray-200 dark:hover:bg-gray-700;
   }
+  
+  /* AI theme components */
+  .ai-gradient-bg {
+    @apply relative bg-gradient-to-r from-blue-500/10 via-purple-500/5 to-pink-500/10;
+  }
+  
+  .signal-effect {
+    @apply absolute inset-0 overflow-hidden pointer-events-none;
+  }
+  
+  .signal-line {
+    @apply absolute border-t border-blue-400/20 dark:border-blue-400/30 animate-pulse-signal;
+    width: 100%;
+    height: 1px;
+  }
+  
+  .glass-card {
+    @apply bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm rounded-xl border border-gray-200/50 dark:border-gray-700/50;
+  }
+  
+  .ai-button {
+    @apply bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 
+    text-white font-medium px-4 py-2 rounded-md transition-all duration-300 shadow-md hover:shadow-lg;
+  }
 }
+
+@keyframes pulse-signal {
+  0% {
+    opacity: 0;
+    transform: translateY(-100vh) translateX(-50%) rotate(-30deg);
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(100vh) translateX(50%) rotate(-30deg);
+  }
+}
+
+@keyframes pulse-signal-reverse {
+  0% {
+    opacity: 0;
+    transform: translateY(100vh) translateX(50%) rotate(30deg);
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-100vh) translateX(-50%) rotate(30deg);
+  }
+}
+
+@layer utilities {
+  .animate-pulse-signal {
+    animation: pulse-signal 8s linear infinite;
+  }
+  
+  .animate-pulse-signal-reverse {
+    animation: pulse-signal-reverse 10s linear infinite;
+  }
+}
+

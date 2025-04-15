@@ -102,12 +102,40 @@ export default {
 					'50%': {
 						opacity: '0.8',
 					}
+				},
+				'pulse-signal': {
+					'0%': {
+						opacity: '0',
+						transform: 'translateY(-100vh) translateX(-50%) rotate(-30deg)'
+					},
+					'50%': {
+						opacity: '0.5'
+					},
+					'100%': {
+						opacity: '0',
+						transform: 'translateY(100vh) translateX(50%) rotate(-30deg)'
+					}
+				},
+				'pulse-signal-reverse': {
+					'0%': {
+						opacity: '0',
+						transform: 'translateY(100vh) translateX(50%) rotate(30deg)'
+					},
+					'50%': {
+						opacity: '0.5'
+					},
+					'100%': {
+						opacity: '0',
+						transform: 'translateY(-100vh) translateX(-50%) rotate(30deg)'
+					}
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
-				'pulse-light': 'pulse-light 2s cubic-bezier(0.4, 0, 0.6, 1) infinite'
+				'pulse-light': 'pulse-light 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+				'pulse-signal': 'pulse-signal 8s linear infinite',
+				'pulse-signal-reverse': 'pulse-signal-reverse 10s linear infinite'
 			},
 			fontFamily: {
 				sans: ['Inter', 'sans-serif'],

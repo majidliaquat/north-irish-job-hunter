@@ -9,7 +9,16 @@ import { Job } from "@/components/JobCard";
 import { searchJobs, exportJobs } from "@/services/jobService";
 import { useToast } from "@/components/ui/use-toast";
 
-const Index = () => {
+interface IndexProps {
+  user?: {
+    name: string;
+    email: string;
+    avatar?: string;
+  } | null;
+  onLogout?: () => void;
+}
+
+const Index: React.FC<IndexProps> = ({ user, onLogout }) => {
   const { toast } = useToast();
   const [profileData, setProfileData] = useState<any>(null);
   const [jobs, setJobs] = useState<Job[]>([]);
@@ -129,11 +138,11 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col">
-      <Header />
+    <div className="min-h-screen flex flex-col ai-gradient-bg">
+      <Header user={user} onLogout={onLogout} />
       <main className="container py-8 flex-1">
         <div className="max-w-4xl mx-auto text-center mb-10">
-          <h1 className="text-4xl font-bold mb-4">Northern Irish Job Hunter</h1>
+          <h1 className="text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-job-blue to-job-light-blue">Northern Irish Job Hunter</h1>
           <p className="text-xl text-muted-foreground">
             Upload your CV and discover the perfect job opportunities in Northern Ireland
           </p>
